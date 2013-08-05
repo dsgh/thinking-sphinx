@@ -320,7 +320,7 @@ module ThinkingSphinx
 
       def add_sphinx_callbacks_and_extend(delta = false)
         unless indexed_by_sphinx?
-          after_destroy :toggle_deleted
+          after_destroy :toggle_deleted, :unless => :new_record?
 
           include ThinkingSphinx::ActiveRecord::AttributeUpdates
         end
